@@ -173,8 +173,11 @@ else
 				<div id="content" class="<?php echo $span;?>">
 					<!-- Begin Content -->
 					<jdoc:include type="modules" name="position-3" style="xhtml" />
-					<jdoc:include type="message" />
-					<jdoc:include type="component" />
+					<!--<jdoc:include type="message" />-->
+                                        <!-- addd position 15 for new create module-->
+                                        <jdoc:include type="modules" name="position-15" style="xhtml" />
+                                        
+					<!--<jdoc:include type="component">-->
 					<jdoc:include type="modules" name="position-2" style="none" />
 					<!-- End Content -->
 				</div>
