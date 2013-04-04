@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Apr 03, 2013 at 07:40 AM
+-- Generation Time: Apr 04, 2013 at 09:01 AM
 -- Server version: 5.5.20
 -- PHP Version: 5.3.10
 
@@ -19,6 +19,30 @@ SET time_zone = "+00:00";
 --
 -- Database: `khmer_jobs`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `jobs`
+--
+
+CREATE TABLE IF NOT EXISTS `jobs` (
+  `jobs_id` int(10) NOT NULL AUTO_INCREMENT,
+  `jobs_title` varchar(1000) NOT NULL,
+  `jobs_company` varchar(1000) NOT NULL,
+  `jobs_deadline` date NOT NULL,
+  PRIMARY KEY (`jobs_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=5 ;
+
+--
+-- Dumping data for table `jobs`
+--
+
+INSERT INTO `jobs` (`jobs_id`, `jobs_title`, `jobs_company`, `jobs_deadline`) VALUES
+(1, 'web developer', 'ITC', '2013-05-15'),
+(2, 'graphic designer', 'ITC', '2013-05-18'),
+(3, 'Android Developer', 'Mapring', '2013-06-06'),
+(4, 'IOS Developer', 'Mapring', '2013-04-27');
 
 -- --------------------------------------------------------
 
@@ -39,49 +63,50 @@ CREATE TABLE IF NOT EXISTS `jobs_assets` (
   UNIQUE KEY `idx_asset_name` (`name`),
   KEY `idx_lft_rgt` (`lft`,`rgt`),
   KEY `idx_parent_id` (`parent_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=37 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=42 ;
 
 --
 -- Dumping data for table `jobs_assets`
 --
 
 INSERT INTO `jobs_assets` (`id`, `parent_id`, `lft`, `rgt`, `level`, `name`, `title`, `rules`) VALUES
-(1, 0, 1, 71, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
+(1, 0, 1, 73, 0, 'root.1', 'Root Asset', '{"core.login.site":{"6":1,"2":1},"core.login.admin":{"6":1},"core.login.offline":{"6":1},"core.admin":{"8":1},"core.manage":{"7":1},"core.create":{"6":1,"3":1},"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1},"core.edit.own":{"6":1,"3":1}}'),
 (2, 1, 1, 2, 1, 'com_admin', 'com_admin', '{}'),
 (3, 1, 3, 6, 1, 'com_banners', 'com_banners', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (4, 1, 7, 8, 1, 'com_cache', 'com_cache', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
 (5, 1, 9, 10, 1, 'com_checkin', 'com_checkin', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
 (6, 1, 11, 12, 1, 'com_config', 'com_config', '{}'),
 (7, 1, 13, 16, 1, 'com_contact', 'com_contact', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(8, 1, 17, 22, 1, 'com_content', 'com_content', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
-(9, 1, 23, 24, 1, 'com_cpanel', 'com_cpanel', '{}'),
-(10, 1, 25, 26, 1, 'com_installer', 'com_installer', '{"core.admin":[],"core.manage":{"7":0},"core.delete":{"7":0},"core.edit.state":{"7":0}}'),
-(11, 1, 27, 28, 1, 'com_languages', 'com_languages', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(12, 1, 29, 30, 1, 'com_login', 'com_login', '{}'),
-(13, 1, 31, 32, 1, 'com_mailto', 'com_mailto', '{}'),
-(14, 1, 33, 34, 1, 'com_massmail', 'com_massmail', '{}'),
-(15, 1, 35, 36, 1, 'com_media', 'com_media', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":{"5":1}}'),
-(16, 1, 37, 38, 1, 'com_menus', 'com_menus', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(17, 1, 39, 40, 1, 'com_messages', 'com_messages', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
-(18, 1, 41, 42, 1, 'com_modules', 'com_modules', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(19, 1, 43, 46, 1, 'com_newsfeeds', 'com_newsfeeds', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(20, 1, 47, 48, 1, 'com_plugins', 'com_plugins', '{"core.admin":{"7":1},"core.manage":[],"core.edit":[],"core.edit.state":[]}'),
-(21, 1, 49, 50, 1, 'com_redirect', 'com_redirect', '{"core.admin":{"7":1},"core.manage":[]}'),
-(22, 1, 51, 52, 1, 'com_search', 'com_search', '{"core.admin":{"7":1},"core.manage":{"6":1}}'),
-(23, 1, 53, 54, 1, 'com_templates', 'com_templates', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(24, 1, 55, 58, 1, 'com_users', 'com_users', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(25, 1, 59, 62, 1, 'com_weblinks', 'com_weblinks', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
-(26, 1, 63, 64, 1, 'com_wrapper', 'com_wrapper', '{}'),
-(27, 8, 18, 21, 2, 'com_content.category.2', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(8, 1, 17, 24, 1, 'com_content', 'com_content', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
+(9, 1, 25, 26, 1, 'com_cpanel', 'com_cpanel', '{}'),
+(10, 1, 27, 28, 1, 'com_installer', 'com_installer', '{"core.admin":[],"core.manage":{"7":0},"core.delete":{"7":0},"core.edit.state":{"7":0}}'),
+(11, 1, 29, 30, 1, 'com_languages', 'com_languages', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(12, 1, 31, 32, 1, 'com_login', 'com_login', '{}'),
+(13, 1, 33, 34, 1, 'com_mailto', 'com_mailto', '{}'),
+(14, 1, 35, 36, 1, 'com_massmail', 'com_massmail', '{}'),
+(15, 1, 37, 38, 1, 'com_media', 'com_media', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":{"5":1}}'),
+(16, 1, 39, 40, 1, 'com_menus', 'com_menus', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(17, 1, 41, 42, 1, 'com_messages', 'com_messages', '{"core.admin":{"7":1},"core.manage":{"7":1}}'),
+(18, 1, 43, 44, 1, 'com_modules', 'com_modules', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(19, 1, 45, 48, 1, 'com_newsfeeds', 'com_newsfeeds', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(20, 1, 49, 50, 1, 'com_plugins', 'com_plugins', '{"core.admin":{"7":1},"core.manage":[],"core.edit":[],"core.edit.state":[]}'),
+(21, 1, 51, 52, 1, 'com_redirect', 'com_redirect', '{"core.admin":{"7":1},"core.manage":[]}'),
+(22, 1, 53, 54, 1, 'com_search', 'com_search', '{"core.admin":{"7":1},"core.manage":{"6":1}}'),
+(23, 1, 55, 56, 1, 'com_templates', 'com_templates', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(24, 1, 57, 60, 1, 'com_users', 'com_users', '{"core.admin":{"7":1},"core.manage":[],"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(25, 1, 61, 64, 1, 'com_weblinks', 'com_weblinks', '{"core.admin":{"7":1},"core.manage":{"6":1},"core.create":{"3":1},"core.delete":[],"core.edit":{"4":1},"core.edit.state":{"5":1},"core.edit.own":[]}'),
+(26, 1, 65, 66, 1, 'com_wrapper', 'com_wrapper', '{}'),
+(27, 8, 18, 23, 2, 'com_content.category.2', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
 (28, 3, 4, 5, 2, 'com_banners.category.3', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
 (29, 7, 14, 15, 2, 'com_contact.category.4', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(30, 19, 44, 45, 2, 'com_newsfeeds.category.5', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(31, 25, 60, 61, 2, 'com_weblinks.category.6', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
-(32, 24, 56, 57, 1, 'com_users.category.7', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
-(33, 1, 65, 66, 1, 'com_finder', 'com_finder', '{"core.admin":{"7":1},"core.manage":{"6":1}}'),
-(34, 1, 67, 68, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{"core.admin":[],"core.manage":[],"core.delete":[],"core.edit.state":[]}'),
+(30, 19, 46, 47, 2, 'com_newsfeeds.category.5', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(31, 25, 62, 63, 2, 'com_weblinks.category.6', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[],"core.edit.own":[]}'),
+(32, 24, 58, 59, 1, 'com_users.category.7', 'Uncategorised', '{"core.create":[],"core.delete":[],"core.edit":[],"core.edit.state":[]}'),
+(33, 1, 67, 68, 1, 'com_finder', 'com_finder', '{"core.admin":{"7":1},"core.manage":{"6":1}}'),
+(34, 1, 69, 70, 1, 'com_joomlaupdate', 'com_joomlaupdate', '{"core.admin":[],"core.manage":[],"core.delete":[],"core.edit.state":[]}'),
 (35, 27, 19, 20, 3, 'com_content.article.1', 'Start', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}'),
-(36, 1, 69, 70, 1, 'com_socialloginandsocialshare', 'socialloginandsocialshare', '{}');
+(36, 1, 71, 72, 1, 'com_socialloginandsocialshare', 'socialloginandsocialshare', '{}'),
+(37, 27, 21, 22, 3, 'com_content.article.2', 'Data linkedIn', '{"core.delete":{"6":1},"core.edit":{"6":1,"4":1},"core.edit.state":{"6":1,"5":1}}');
 
 -- --------------------------------------------------------
 
@@ -239,7 +264,7 @@ CREATE TABLE IF NOT EXISTS `jobs_categories` (
 
 INSERT INTO `jobs_categories` (`id`, `asset_id`, `parent_id`, `lft`, `rgt`, `level`, `path`, `extension`, `title`, `alias`, `note`, `description`, `published`, `checked_out`, `checked_out_time`, `access`, `params`, `metadesc`, `metakey`, `metadata`, `created_user_id`, `created_time`, `modified_user_id`, `modified_time`, `hits`, `language`, `version`) VALUES
 (1, 0, 0, 0, 13, 0, '', 'system', 'ROOT', 'root', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{}', '', '', '', 290, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
-(2, 27, 1, 1, 2, 1, 'uncategorised', 'com_content', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 290, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
+(2, 27, 1, 1, 2, 1, 'uncategorised', 'com_content', 'Uncategorised', 'uncategorised', '', '', 1, 290, '2013-04-04 01:49:46', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 290, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
 (3, 28, 1, 3, 4, 1, 'uncategorised', 'com_banners', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":"","foobar":""}', '', '', '{"page_title":"","author":"","robots":""}', 290, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
 (4, 29, 1, 5, 6, 1, 'uncategorised', 'com_contact', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 290, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
 (5, 30, 1, 7, 8, 1, 'uncategorised', 'com_newsfeeds', 'Uncategorised', 'uncategorised', '', '', 1, 0, '0000-00-00 00:00:00', 1, '{"target":"","image":""}', '', '', '{"page_title":"","author":"","robots":""}', 290, '2011-01-01 00:00:01', 0, '0000-00-00 00:00:00', 0, '*', 1),
@@ -353,14 +378,15 @@ CREATE TABLE IF NOT EXISTS `jobs_content` (
   KEY `idx_featured_catid` (`featured`,`catid`),
   KEY `idx_language` (`language`),
   KEY `idx_xreference` (`xreference`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
 
 --
 -- Dumping data for table `jobs_content`
 --
 
 INSERT INTO `jobs_content` (`id`, `asset_id`, `title`, `alias`, `introtext`, `fulltext`, `state`, `catid`, `created`, `created_by`, `created_by_alias`, `modified`, `modified_by`, `checked_out`, `checked_out_time`, `publish_up`, `publish_down`, `images`, `urls`, `attribs`, `version`, `ordering`, `metakey`, `metadesc`, `access`, `hits`, `metadata`, `featured`, `language`, `xreference`) VALUES
-(1, 35, 'Start', 'getting-started', '<p>HHello to page Khmer Jobs.eHello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.llo to page Khmer Jobs.</p>', '', 1, 2, '2011-01-01 10:01:00', 290, '', '2013-04-03 06:14:25', 290, 0, '0000-00-00 00:00:00', '2012-09-23 10:01:10', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":null,"urlatext":"","targeta":"","urlb":null,"urlbtext":"","targetb":"","urlc":null,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_intro":"","info_block_position":"0","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 7, 0, '', '', 1, 105, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
+(1, 35, 'Start', 'getting-started', '<p>HHello to page Khmer Jobs.eHello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.Hello to page Khmer Jobs.llo to page Khmer Jobs.</p>', '', 1, 2, '2011-01-01 10:01:00', 290, '', '2013-04-03 06:14:25', 290, 290, '2013-04-04 04:44:28', '2012-09-23 10:01:10', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":null,"urlatext":"","targeta":"","urlb":null,"urlbtext":"","targetb":"","urlc":null,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_intro":"","info_block_position":"0","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 7, 1, '', '', 1, 214, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', ''),
+(2, 37, 'Data linkedIn', 'data-linkedin', '<p>&lt;h2&gt; Hello kagnara.&lt;/h2&gt;</p>', '', 1, 2, '2013-04-03 07:58:07', 290, '', '0000-00-00 00:00:00', 0, 290, '2013-04-04 06:59:18', '2013-04-03 07:58:07', '0000-00-00 00:00:00', '{"image_intro":"","float_intro":"","image_intro_alt":"","image_intro_caption":"","image_fulltext":"","float_fulltext":"","image_fulltext_alt":"","image_fulltext_caption":""}', '{"urla":null,"urlatext":"","targeta":"","urlb":null,"urlbtext":"","targetb":"","urlc":null,"urlctext":"","targetc":""}', '{"show_title":"","link_titles":"","show_intro":"","info_block_position":"","show_category":"","link_category":"","show_parent_category":"","link_parent_category":"","show_author":"","link_author":"","show_create_date":"","show_modify_date":"","show_publish_date":"","show_item_navigation":"","show_icons":"","show_print_icon":"","show_email_icon":"","show_vote":"","show_hits":"","show_noauth":"","urls_position":"","alternative_readmore":"","article_layout":"","show_publishing_options":"","show_article_options":"","show_urls_images_backend":"","show_urls_images_frontend":""}', 1, 0, '', '', 1, 3, '{"robots":"","author":"","rights":"","xreference":""}', 0, '*', '');
 
 -- --------------------------------------------------------
 
@@ -427,7 +453,7 @@ CREATE TABLE IF NOT EXISTS `jobs_extensions` (
   KEY `element_clientid` (`element`,`client_id`),
   KEY `element_folder_clientid` (`element`,`folder`,`client_id`),
   KEY `extension` (`type`,`element`,`folder`,`client_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10004 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=10026 ;
 
 --
 -- Dumping data for table `jobs_extensions`
@@ -453,7 +479,7 @@ INSERT INTO `jobs_extensions` (`extension_id`, `name`, `type`, `element`, `folde
 (17, 'com_newsfeeds', 'component', 'com_newsfeeds', '', 1, 1, 1, 0, '{"name":"com_newsfeeds","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2013 Open Source Matters. All rights reserved.\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_NEWSFEEDS_XML_DESCRIPTION","group":""}', '{"show_feed_image":"1","show_feed_description":"1","show_item_description":"1","feed_word_count":"0","show_headings":"1","show_name":"1","show_articles":"0","show_link":"1","show_description":"1","show_description_image":"1","display_num":"","show_pagination_limit":"1","show_pagination":"1","show_pagination_results":"1","show_cat_items":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (18, 'com_plugins', 'component', 'com_plugins', '', 1, 1, 1, 1, '{"name":"com_plugins","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2013 Open Source Matters. All rights reserved.\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_PLUGINS_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (19, 'com_search', 'component', 'com_search', '', 1, 1, 1, 0, '{"name":"com_search","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2013 Open Source Matters. All rights reserved.\\n\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_SEARCH_XML_DESCRIPTION","group":""}', '{"enabled":"0","show_date":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(20, 'com_templates', 'component', 'com_templates', '', 1, 1, 1, 1, '{"name":"com_templates","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2013 Open Source Matters. All rights reserved.\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_TEMPLATES_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(20, 'com_templates', 'component', 'com_templates', '', 1, 1, 1, 1, '{"name":"com_templates","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2013 Open Source Matters. All rights reserved.\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_TEMPLATES_XML_DESCRIPTION","group":""}', '{"template_positions_display":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (21, 'com_weblinks', 'component', 'com_weblinks', '', 1, 1, 1, 0, '{"name":"com_weblinks","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2013 Open Source Matters. All rights reserved.\\n\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_WEBLINKS_XML_DESCRIPTION","group":""}', '{"show_comp_description":"1","comp_description":"","show_link_hits":"1","show_link_description":"1","show_other_cats":"0","show_headings":"0","show_numbers":"0","show_report":"1","count_clicks":"1","target":"0","link_icons":""}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (22, 'com_content', 'component', 'com_content', '', 1, 1, 0, 1, '{"name":"com_content","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2013 Open Source Matters. All rights reserved.\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_CONTENT_XML_DESCRIPTION","group":""}', '{"article_layout":"_:default","show_title":"1","link_titles":"1","show_intro":"1","show_category":"1","link_category":"1","show_parent_category":"0","link_parent_category":"0","show_author":"1","link_author":"0","show_create_date":"0","show_modify_date":"0","show_publish_date":"1","show_item_navigation":"1","show_vote":"0","show_readmore":"1","show_readmore_title":"1","readmore_limit":"100","show_icons":"1","show_print_icon":"1","show_email_icon":"1","show_hits":"1","show_noauth":"0","show_publishing_options":"1","show_article_options":"1","show_urls_images_frontend":"0","show_urls_images_backend":"1","targeta":0,"targetb":0,"targetc":0,"float_intro":"left","float_fulltext":"left","category_layout":"_:blog","show_category_title":"0","show_description":"0","show_description_image":"0","maxLevel":"1","show_empty_categories":"0","show_no_articles":"1","show_subcat_desc":"1","show_cat_num_articles":"0","show_base_description":"1","maxLevelcat":"-1","show_empty_categories_cat":"0","show_subcat_desc_cat":"1","show_cat_num_articles_cat":"1","num_leading_articles":"1","num_intro_articles":"4","num_columns":"2","num_links":"4","multi_column_order":"0","show_subcategory_content":"0","show_pagination_limit":"1","filter_field":"hide","show_headings":"1","list_show_date":"0","date_format":"","list_show_hits":"1","list_show_author":"1","orderby_pri":"order","orderby_sec":"rdate","order_date":"published","show_pagination":"2","show_pagination_results":"1","show_feed_link":"1","feed_summary":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (23, 'com_config', 'component', 'com_config', '', 1, 1, 0, 1, '{"name":"com_config","type":"component","creationDate":"April 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2013 Open Source Matters. All rights reserved.\\t","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"COM_CONFIG_XML_DESCRIPTION","group":""}', '{"filters":{"1":{"filter_type":"NH","filter_tags":"","filter_attributes":""},"6":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"7":{"filter_type":"NONE","filter_tags":"","filter_attributes":""},"2":{"filter_type":"NH","filter_tags":"","filter_attributes":""},"3":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"4":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"5":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"10":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"12":{"filter_type":"BL","filter_tags":"","filter_attributes":""},"8":{"filter_type":"NONE","filter_tags":"","filter_attributes":""}}}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
@@ -531,9 +557,9 @@ INSERT INTO `jobs_extensions` (`extension_id`, `name`, `type`, `element`, `folde
 (425, 'plg_system_debug', 'plugin', 'debug', 'system', 0, 1, 1, 0, '{"name":"plg_system_debug","type":"plugin","creationDate":"December 2006","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_DEBUG_XML_DESCRIPTION","group":""}', '{"profile":"1","queries":"1","memory":"1","language_files":"1","language_strings":"1","strip-first":"1","strip-prefix":"","strip-suffix":""}', '', '', 0, '0000-00-00 00:00:00', 4, 0),
 (426, 'plg_system_log', 'plugin', 'log', 'system', 0, 1, 1, 1, '{"name":"plg_system_log","type":"plugin","creationDate":"April 2007","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_LOG_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 5, 0),
 (427, 'plg_system_redirect', 'plugin', 'redirect', 'system', 0, 1, 1, 1, '{"name":"plg_system_redirect","type":"plugin","creationDate":"April 2009","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_REDIRECT_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 6, 0),
-(428, 'plg_system_remember', 'plugin', 'remember', 'system', 0, 1, 1, 1, '{"name":"plg_system_remember","type":"plugin","creationDate":"April 2007","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_REMEMBER_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 7, 0),
-(429, 'plg_system_sef', 'plugin', 'sef', 'system', 0, 1, 1, 0, '{"name":"plg_system_sef","type":"plugin","creationDate":"December 2007","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_SEF_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 8, 0);
+(428, 'plg_system_remember', 'plugin', 'remember', 'system', 0, 1, 1, 1, '{"name":"plg_system_remember","type":"plugin","creationDate":"April 2007","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_REMEMBER_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 7, 0);
 INSERT INTO `jobs_extensions` (`extension_id`, `name`, `type`, `element`, `folder`, `client_id`, `enabled`, `access`, `protected`, `manifest_cache`, `params`, `custom_data`, `system_data`, `checked_out`, `checked_out_time`, `ordering`, `state`) VALUES
+(429, 'plg_system_sef', 'plugin', 'sef', 'system', 0, 1, 1, 0, '{"name":"plg_system_sef","type":"plugin","creationDate":"December 2007","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_SEF_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 8, 0),
 (430, 'plg_system_logout', 'plugin', 'logout', 'system', 0, 1, 1, 1, '{"name":"plg_system_logout","type":"plugin","creationDate":"April 2009","author":"Joomla! Project","copyright":"Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_SYSTEM_LOGOUT_XML_DESCRIPTION","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 3, 0),
 (431, 'plg_user_contactcreator', 'plugin', 'contactcreator', 'user', 0, 0, 1, 0, '{"name":"plg_user_contactcreator","type":"plugin","creationDate":"August 2009","author":"Joomla! Project","copyright":"(C) 2005 - 2013 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_CONTACTCREATOR_XML_DESCRIPTION","group":""}', '{"autowebpage":"","category":"34","autopublish":"0"}', '', '', 0, '0000-00-00 00:00:00', 1, 0),
 (432, 'plg_user_joomla', 'plugin', 'joomla', 'user', 0, 1, 1, 0, '{"name":"plg_user_joomla","type":"plugin","creationDate":"December 2006","author":"Joomla! Project","copyright":"(C) 2005 - 2009 Open Source Matters. All rights reserved.","authorEmail":"admin@joomla.org","authorUrl":"www.joomla.org","version":"3.0.0","description":"PLG_USER_JOOMLA_XML_DESCRIPTION","group":""}', '{"autoregister":"1"}', '', '', 0, '0000-00-00 00:00:00', 2, 0),
@@ -561,7 +587,9 @@ INSERT INTO `jobs_extensions` (`extension_id`, `name`, `type`, `element`, `folde
 (10000, 'socialloginandsocialshare', 'component', 'com_socialloginandsocialshare', '', 1, 1, 0, 0, '{"name":"Social Login And Social Share","type":"component","creationDate":"2012-01-01","author":"LoginRadius","copyright":"2013, LoginRadius","authorEmail":"developers@loginradius.com","authorUrl":"http:\\/\\/www.loginradius.com","version":"3.0.1","description":"","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10001, 'mod_socialloginandsocialshare', 'module', 'mod_socialloginandsocialshare', '', 0, 1, 0, 0, '{"name":"mod_socialloginandsocialshare","type":"module","creationDate":"2012-01-01","author":"LoginRadius","copyright":"Copyright (C) 2012 - till Open Source Matters. All rights reserved.","authorEmail":"developers@loginradius.com","authorUrl":"www.LoginRadius.com","version":"3.0.1","description":"LoginRadius enables social login and social share for your joomla websites.","group":""}', '{"usesecure":"0","cache":"0"}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
 (10002, 'System - Social Login And Social Share', 'plugin', 'socialloginandsocialshare', 'system', 0, 1, 1, 0, '{"name":"System - Social Login And Social Share","type":"plugin","creationDate":"2012-01-01","author":"LoginRadius","copyright":"2012 to till","authorEmail":"developers@loginradius.com","authorUrl":"http:\\/\\/www.loginradius.com","version":"3.0.1","description":"\\n\\tLoginRadius enables social login for your joomla websites.\\n","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
-(10003, 'Content - Social Share', 'plugin', 'socialshare', 'content', 0, 1, 1, 0, '{"name":"Content - Social Share","type":"plugin","creationDate":"2012-01-01","author":"LoginRadius","copyright":"2012 to till","authorEmail":"developers@loginradius.com","authorUrl":"http:\\/\\/www.loginradius.com","version":"3.0.1","description":"\\n\\tLoginRadius enables social share for your joomla websites.\\n","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
+(10003, 'Content - Social Share', 'plugin', 'socialshare', 'content', 0, 1, 1, 0, '{"name":"Content - Social Share","type":"plugin","creationDate":"2012-01-01","author":"LoginRadius","copyright":"2012 to till","authorEmail":"developers@loginradius.com","authorUrl":"http:\\/\\/www.loginradius.com","version":"3.0.1","description":"\\n\\tLoginRadius enables social share for your joomla websites.\\n","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10014, 'mod_hello', 'module', 'mod_hello', '', 0, 1, 0, 0, '{"name":"mod_hello","type":"module","creationDate":"Unknown","author":"Unknown","copyright":"","authorEmail":"","authorUrl":"","version":"","description":"A simple Hello, World! module.","group":""}', '{}', '', '', 0, '0000-00-00 00:00:00', 0, 0),
+(10019, 'Multi View Cal Creator', 'plugin', 'multiviewcalcreator', 'user', 0, 0, 1, 0, '{"name":"Multi View Cal Creator","type":"plugin","creationDate":"2011-07-30","author":"CodePeople","copyright":"(c)\\t2011 CodePeople\\tLLC\\t- www.codepeople.net","authorEmail":"info@joomlacalendars.com","authorUrl":"www.joomlacalendars.com","version":"1.7.0","description":"Plugin to automatically create Multi-View calendar for new users","group":""}', '{"permissions1":"1","permissions2":"1","permissions3":"1"}', '', '', 0, '0000-00-00 00:00:00', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -1264,14 +1292,14 @@ CREATE TABLE IF NOT EXISTS `jobs_menu` (
   KEY `idx_alias` (`alias`),
   KEY `idx_path` (`path`(255)),
   KEY `idx_language` (`language`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=466 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=476 ;
 
 --
 -- Dumping data for table `jobs_menu`
 --
 
 INSERT INTO `jobs_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `link`, `type`, `published`, `parent_id`, `level`, `component_id`, `checked_out`, `checked_out_time`, `browserNav`, `access`, `img`, `template_style_id`, `params`, `lft`, `rgt`, `home`, `language`, `client_id`) VALUES
-(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 223, 0, '*', 0),
+(1, '', 'Menu_Item_Root', 'root', '', '', '', '', 1, 0, 0, 0, 0, '0000-00-00 00:00:00', 0, 0, '', 0, '', 0, 231, 0, '*', 0),
 (2, 'menu', 'com_banners', 'Banners', '', 'Banners', 'index.php?option=com_banners', 'component', 0, 1, 1, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 3, 12, 0, '*', 1),
 (3, 'menu', 'com_banners', 'Banners', '', 'Banners/Banners', 'index.php?option=com_banners', 'component', 0, 2, 2, 4, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners', 0, '', 4, 5, 0, '*', 1),
 (4, 'menu', 'com_banners_categories', 'Categories', '', 'Banners/Categories', 'index.php?option=com_categories&extension=com_banners', 'component', 0, 2, 2, 6, 0, '0000-00-00 00:00:00', 0, 0, 'class:banners-cat', 0, '', 6, 7, 0, '*', 1),
@@ -1300,7 +1328,8 @@ INSERT INTO `jobs_menu` (`id`, `menutype`, `title`, `alias`, `note`, `path`, `li
 (449, 'usermenu', 'Submit an Article', 'submit-an-article', '', 'submit-an-article', 'index.php?option=com_content&view=form&layout=edit', 'component', 1, 1, 1, 22, 0, '0000-00-00 00:00:00', 0, 3, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 215, 216, 0, '*', 0),
 (450, 'usermenu', 'Submit a Web Link', 'submit-a-web-link', '', 'submit-a-web-link', 'index.php?option=com_weblinks&view=form&layout=edit', 'component', 1, 1, 1, 21, 0, '0000-00-00 00:00:00', 0, 3, '', 0, '{"menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":0,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 217, 218, 0, '*', 0),
 (464, 'top', 'Home', 'home', '', 'home', 'index.php?Itemid=', 'alias', 1, 1, 1, 0, 0, '0000-00-00 00:00:00', 0, 1, '', 0, '{"aliasoptions":"435","menu-anchor_title":"","menu-anchor_css":"","menu_image":""}', 205, 206, 0, '*', 0),
-(465, 'main', 'COM_SOCIALLOGINANDSOCIALSHARE', 'com-socialloginandsocialshare', '', 'com-socialloginandsocialshare', 'index.php?option=com_socialloginandsocialshare', 'component', 0, 1, 1, 10000, 0, '0000-00-00 00:00:00', 0, 1, '../media/com_socialloginandsocialshare/images/favicon.png', 0, '', 221, 222, 0, '', 1);
+(465, 'main', 'COM_SOCIALLOGINANDSOCIALSHARE', 'com-socialloginandsocialshare', '', 'com-socialloginandsocialshare', 'index.php?option=com_socialloginandsocialshare', 'component', 0, 1, 1, 10000, 0, '0000-00-00 00:00:00', 0, 1, '../media/com_socialloginandsocialshare/images/favicon.png', 0, '', 221, 222, 0, '', 1),
+(472, 'mainmenu', 'Calendar', 'calendar', '', 'calendar', 'index.php?option=com_multicalendar&view=multicalendar', 'component', 1, 1, 1, 10015, 0, '0000-00-00 00:00:00', 0, 1, '', 7, '{"the_calendar_id":"2","views":["viewMonth"],"viewdefault":"month","start_weekday":"0","cssStyle":"ui-lightness","palette":"0","edition":"1","buttons":["bnavigation"],"numberOfMonths":"6","sample":["click","","same_window"],"otherparams":"","menu-anchor_title":"","menu-anchor_css":"","menu_image":"","menu_text":1,"page_title":"","show_page_heading":1,"page_heading":"","pageclass_sfx":"","menu-meta_description":"","menu-meta_keywords":"","robots":"","secure":0}', 229, 230, 0, 'en-GB', 0);
 
 -- --------------------------------------------------------
 
@@ -1394,7 +1423,7 @@ CREATE TABLE IF NOT EXISTS `jobs_modules` (
   KEY `published` (`published`,`access`),
   KEY `newsfeeds` (`module`,`published`),
   KEY `idx_language` (`language`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=88 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=95 ;
 
 --
 -- Dumping data for table `jobs_modules`
@@ -1441,7 +1470,8 @@ INSERT INTO `jobs_modules` (`id`, `title`, `note`, `content`, `ordering`, `posit
 (79, 'Multilanguage status', '', '', 1, 'status', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 0, 'mod_multilangstatus', 3, 1, '{"layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*'),
 (84, 'Smart Search Module', '', '', 2, '', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_finder', 1, 1, '{"searchfilter":"","show_autosuggest":"1","show_advanced":"0","layout":"_:default","moduleclass_sfx":"","field_size":20,"alt_label":"","show_label":"0","label_pos":"top","show_button":"0","button_pos":"right","opensearch":"1","opensearch_title":""}', 0, '*'),
 (86, 'Joomla Version', '', '', 1, 'footer', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_version', 2, 1, '{"format":"short","product":"1","layout":"_:default","moduleclass_sfx":"","cache":"0"}', 1, '*'),
-(87, 'Login', '', '', 1, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_socialloginandsocialshare', 1, 1, '{"pretext":"","posttext":"","login":"","logout":"","usesecure":"0","layout":"_:default","moduleclass_sfx":"","cache":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*');
+(87, 'Login', '', '', 1, 'position-7', 0, '0000-00-00 00:00:00', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_socialloginandsocialshare', 1, 1, '{"pretext":"","posttext":"","login":"","logout":"","usesecure":"0","layout":"_:default","moduleclass_sfx":"","cache":"0","module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*'),
+(92, 'mod_hello', '', '', 1, 'position-15', 290, '2013-04-04 05:50:54', '0000-00-00 00:00:00', '0000-00-00 00:00:00', 1, 'mod_hello', 1, 0, '{"module_tag":"div","bootstrap_size":"0","header_tag":"h3","header_class":"","style":"0"}', 0, '*');
 
 -- --------------------------------------------------------
 
@@ -1481,7 +1511,12 @@ INSERT INTO `jobs_modules_menu` (`moduleid`, `menuid`) VALUES
 (48, 0),
 (79, 0),
 (86, 0),
-(87, 0);
+(87, 0),
+(92, 201),
+(92, 435),
+(92, 448),
+(92, 449),
+(92, 450);
 
 -- --------------------------------------------------------
 
@@ -1563,7 +1598,15 @@ CREATE TABLE IF NOT EXISTS `jobs_redirect_links` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `idx_link_old` (`old_url`),
   KEY `idx_link_modifed` (`modified_date`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=3 ;
+
+--
+-- Dumping data for table `jobs_redirect_links`
+--
+
+INSERT INTO `jobs_redirect_links` (`id`, `old_url`, `new_url`, `referer`, `comment`, `hits`, `published`, `created_date`, `modified_date`) VALUES
+(1, 'http://localhost/joomla_jobs/index.php/insert', '', 'http://localhost/joomla_jobs/index.php/infor', '', 1, 0, '2013-04-03 09:32:21', '0000-00-00 00:00:00'),
+(2, 'http://localhost/joomla_jobs/index.php/infor', '', 'http://localhost/joomla_jobs/', '', 1, 0, '2013-04-04 08:39:02', '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1608,8 +1651,8 @@ CREATE TABLE IF NOT EXISTS `jobs_session` (
 --
 
 INSERT INTO `jobs_session` (`session_id`, `client_id`, `guest`, `time`, `data`, `userid`, `username`) VALUES
-('kqv8fal2cut54ebc9ce1p76ll4', 1, 0, '1364974172', '__default|a:8:{s:15:"session.counter";i:12;s:19:"session.timer.start";i:1364972671;s:18:"session.timer.last";i:1364974168;s:17:"session.timer.now";i:1364974171;s:22:"session.client.browser";s:65:"Mozilla/5.0 (Windows NT 6.2; rv:19.0) Gecko/20100101 Firefox/19.0";s:8:"registry";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":2:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:0:"";}s:11:"com_modules";O:8:"stdClass":1:{s:7:"modules";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:18:"client_id_previous";i:0;}}}}}s:4:"user";O:5:"JUser":24:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"290";s:4:"name";s:10:"Super User";s:8:"username";s:5:"admin";s:5:"email";s:21:"kol.kagnara@gmail.com";s:8:"password";s:65:"7678265e43a0f1ff6e98e25ea45b880b:A3sQtMgIaFOSR65OABZuAOP3giQqg0yx";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2013-04-03 04:29:58";s:13:"lastvisitDate";s:19:"2013-04-03 05:19:16";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:10:"\\0\\0\\0_params";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:4:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}s:13:"session.token";s:32:"427b34cbe0593f2d67a2fad4d214534c";}', 290, 'admin'),
-('pgvcpadclqg1o79ihvoj7ijcg0', 0, 1, '1364974711', '__default|a:8:{s:15:"session.counter";i:48;s:19:"session.timer.start";i:1364963789;s:18:"session.timer.last";i:1364973871;s:17:"session.timer.now";i:1364974711;s:22:"session.client.browser";s:65:"Mozilla/5.0 (Windows NT 6.2; rv:19.0) Gecko/20100101 Firefox/19.0";s:8:"registry";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":24:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:1:{i:0;s:1:"9";}s:5:"guest";i:1;s:13:"lastResetTime";N;s:10:"resetCount";N;s:10:"\\0\\0\\0_params";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:9;}s:14:"\\0\\0\\0_authLevels";a:3:{i:0;i:1;i:1;i:1;i:2;i:5;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}s:13:"session.token";s:32:"fad3e558b9d23249e6d4976978edda9f";}', 0, '');
+('kqv8fal2cut54ebc9ce1p76ll4', 1, 0, '1365065156', '__default|a:8:{s:15:"session.counter";i:320;s:19:"session.timer.start";i:1365053029;s:18:"session.timer.last";i:1365065138;s:17:"session.timer.now";i:1365065156;s:22:"session.client.browser";s:65:"Mozilla/5.0 (Windows NT 6.2; rv:19.0) Gecko/20100101 Firefox/19.0";s:8:"registry";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":15:{s:11:"application";O:8:"stdClass":1:{s:4:"lang";s:0:"";}s:11:"com_modules";O:8:"stdClass":3:{s:7:"modules";O:8:"stdClass":4:{s:6:"filter";O:8:"stdClass":8:{s:18:"client_id_previous";i:0;s:6:"search";s:8:"calendar";s:6:"access";i:0;s:5:"state";s:0:"";s:8:"position";s:0:"";s:6:"module";s:0:"";s:9:"client_id";i:0;s:8:"language";s:0:"";}s:10:"limitstart";i:0;s:8:"ordercol";s:8:"position";s:9:"orderdirn";s:3:"asc";}s:4:"edit";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":2:{s:2:"id";a:1:{i:0;i:92;}s:4:"data";N;}}s:3:"add";O:8:"stdClass":1:{s:6:"module";O:8:"stdClass":2:{s:12:"extension_id";N;s:6:"params";N;}}}s:6:"global";O:8:"stdClass":1:{s:4:"list";O:8:"stdClass":1:{s:5:"limit";i:20;}}s:13:"com_installer";O:8:"stdClass":6:{s:7:"message";s:0:"";s:17:"extension_message";s:0:"";s:6:"update";O:8:"stdClass":3:{s:6:"filter";O:8:"stdClass":4:{s:6:"search";s:9:"mod_hello";s:9:"client_id";s:0:"";s:4:"type";s:0:"";s:5:"group";s:0:"";}s:8:"ordercol";s:4:"name";s:9:"orderdirn";s:3:"asc";}s:12:"redirect_url";N;s:8:"warnings";O:8:"stdClass":1:{s:8:"ordercol";N;}s:6:"manage";O:8:"stdClass":4:{s:6:"filter";O:8:"stdClass":5:{s:6:"search";s:0:"";s:9:"client_id";s:0:"";s:6:"status";s:0:"";s:4:"type";s:6:"plugin";s:5:"group";s:0:"";}s:10:"limitstart";s:2:"40";s:8:"ordercol";s:4:"name";s:9:"orderdirn";s:3:"asc";}}s:9:"com_menus";O:8:"stdClass":2:{s:5:"items";O:8:"stdClass":2:{s:6:"filter";O:8:"stdClass":1:{s:8:"menutype";s:8:"mainmenu";}s:10:"limitstart";i:0;}s:4:"edit";O:8:"stdClass":1:{s:4:"item";O:8:"stdClass":4:{s:4:"data";N;s:4:"type";N;s:4:"link";N;s:2:"id";a:0:{}}}}s:4:"item";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:8:"menutype";s:8:"mainmenu";}}s:11:"com_content";O:8:"stdClass":1:{s:4:"edit";O:8:"stdClass":1:{s:7:"article";O:8:"stdClass":2:{s:2:"id";a:1:{i:0;i:2;}s:4:"data";N;}}}s:14:"com_categories";O:8:"stdClass":1:{s:10:"categories";O:8:"stdClass":1:{s:6:"filter";O:8:"stdClass":1:{s:9:"extension";s:11:"com_content";}}}s:12:"filter_order";s:7:"m.title";s:16:"filter_order_Dir";s:3:"asc";s:12:"filter_state";s:0:"";s:6:"search";s:0:"";s:10:"limitstart";i:0;s:9:"com_cache";O:8:"stdClass":1:{s:5:"cache";O:8:"stdClass":1:{s:8:"ordercol";s:5:"group";}}s:11:"com_plugins";O:8:"stdClass":2:{s:7:"plugins";O:8:"stdClass":4:{s:6:"filter";O:8:"stdClass":4:{s:6:"search";s:0:"";s:6:"access";i:0;s:7:"enabled";s:0:"";s:6:"folder";s:0:"";}s:10:"limitstart";s:2:"40";s:8:"ordercol";s:6:"folder";s:9:"orderdirn";s:3:"asc";}s:4:"edit";O:8:"stdClass":1:{s:6:"plugin";O:8:"stdClass":2:{s:2:"id";a:0:{}s:4:"data";N;}}}}}s:4:"user";O:5:"JUser":24:{s:9:"\\0\\0\\0isRoot";b:1;s:2:"id";s:3:"290";s:4:"name";s:10:"Super User";s:8:"username";s:5:"admin";s:5:"email";s:21:"kol.kagnara@gmail.com";s:8:"password";s:65:"7678265e43a0f1ff6e98e25ea45b880b:A3sQtMgIaFOSR65OABZuAOP3giQqg0yx";s:14:"password_clear";s:0:"";s:5:"block";s:1:"0";s:9:"sendEmail";s:1:"1";s:12:"registerDate";s:19:"2013-04-03 04:29:58";s:13:"lastvisitDate";s:19:"2013-04-04 04:36:42";s:10:"activation";s:1:"0";s:6:"params";s:0:"";s:6:"groups";a:1:{i:8;s:1:"8";}s:5:"guest";i:0;s:13:"lastResetTime";s:19:"0000-00-00 00:00:00";s:10:"resetCount";s:1:"0";s:10:"\\0\\0\\0_params";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:8;}s:14:"\\0\\0\\0_authLevels";a:4:{i:0;i:1;i:1;i:1;i:2;i:2;i:3;i:3;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}s:13:"session.token";s:32:"3da6898f08ab7976db99c06fdd1ff9f9";}', 290, 'admin'),
+('pgvcpadclqg1o79ihvoj7ijcg0', 0, 1, '1365065590', '__default|a:8:{s:15:"session.counter";i:237;s:19:"session.timer.start";i:1365040031;s:18:"session.timer.last";i:1365064749;s:17:"session.timer.now";i:1365065590;s:22:"session.client.browser";s:65:"Mozilla/5.0 (Windows NT 6.2; rv:19.0) Gecko/20100101 Firefox/19.0";s:8:"registry";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:4:"user";O:5:"JUser":24:{s:9:"\\0\\0\\0isRoot";b:0;s:2:"id";i:0;s:4:"name";N;s:8:"username";N;s:5:"email";N;s:8:"password";N;s:14:"password_clear";s:0:"";s:5:"block";N;s:9:"sendEmail";i:0;s:12:"registerDate";N;s:13:"lastvisitDate";N;s:10:"activation";N;s:6:"params";N;s:6:"groups";a:1:{i:0;s:1:"9";}s:5:"guest";i:1;s:13:"lastResetTime";N;s:10:"resetCount";N;s:10:"\\0\\0\\0_params";O:9:"JRegistry":1:{s:7:"\\0\\0\\0data";O:8:"stdClass":0:{}}s:14:"\\0\\0\\0_authGroups";a:2:{i:0;i:1;i:1;i:9;}s:14:"\\0\\0\\0_authLevels";a:3:{i:0;i:1;i:1;i:1;i:2;i:5;}s:15:"\\0\\0\\0_authActions";N;s:12:"\\0\\0\\0_errorMsg";N;s:10:"\\0\\0\\0_errors";a:0:{}s:3:"aid";i:0;}s:13:"session.token";s:32:"01fd5c66779a001da6f2119632885b92";}', 0, '');
 
 -- --------------------------------------------------------
 
@@ -1735,10 +1778,10 @@ CREATE TABLE IF NOT EXISTS `jobs_update_sites` (
 --
 
 INSERT INTO `jobs_update_sites` (`update_site_id`, `name`, `type`, `location`, `enabled`, `last_check_timestamp`) VALUES
-(1, 'Joomla Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1364969271),
-(2, 'Joomla Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1364969271),
-(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 1364969271),
-(4, 'social login and social share Updates', 'extension', 'http://joomlanew.pleaselogin.me/extension.xml', 1, 1364969271);
+(1, 'Joomla Core', 'collection', 'http://update.joomla.org/core/list.xml', 1, 1365045197),
+(2, 'Joomla Extension Directory', 'collection', 'http://update.joomla.org/jed/list.xml', 1, 1365045197),
+(3, 'Accredited Joomla! Translations', 'collection', 'http://update.joomla.org/language/translationlist_3.xml', 1, 1365045197),
+(4, 'social login and social share Updates', 'extension', 'http://joomlanew.pleaselogin.me/extension.xml', 1, 1365045197);
 
 -- --------------------------------------------------------
 
@@ -1828,7 +1871,7 @@ CREATE TABLE IF NOT EXISTS `jobs_users` (
 --
 
 INSERT INTO `jobs_users` (`id`, `name`, `username`, `email`, `password`, `block`, `sendEmail`, `registerDate`, `lastvisitDate`, `activation`, `params`, `lastResetTime`, `resetCount`) VALUES
-(290, 'Super User', 'admin', 'kol.kagnara@gmail.com', '7678265e43a0f1ff6e98e25ea45b880b:A3sQtMgIaFOSR65OABZuAOP3giQqg0yx', 0, 1, '2013-04-03 04:29:58', '2013-04-03 07:04:44', '0', '', '0000-00-00 00:00:00', 0),
+(290, 'Super User', 'admin', 'kol.kagnara@gmail.com', '7678265e43a0f1ff6e98e25ea45b880b:A3sQtMgIaFOSR65OABZuAOP3giQqg0yx', 0, 1, '2013-04-03 04:29:58', '2013-04-04 05:23:55', '0', '', '0000-00-00 00:00:00', 0),
 (291, 'Islu', 'IsluImu', 'kolkagnara@yahoo.com', '289c4cfbe441fae6191a2d0df89ce4d7:rXqP8peheVfaPZK60HhavglGSTJvVm4C', 0, 0, '2013-04-03 04:33:26', '2013-04-03 04:33:33', '', '{}', '0000-00-00 00:00:00', 0),
 (292, 'cn', 'cnpisit', 'pisit_lovlov@yahoo.com', 'd1a9530a2658ebceead6963a3406360d:2CRzIbMvdfzV4zcntAcBoDdbuvGCzJ8a', 0, 0, '2013-04-03 04:36:22', '2013-04-03 04:36:29', '', '{}', '0000-00-00 00:00:00', 0);
 
